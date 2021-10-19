@@ -14,14 +14,30 @@ const isMarkDown = (path) => {
     const arr = filename.split('.')
     return arr[arr.length - 1] === 'md'
 }
-const markdownTitle = (activeLayer) => {
+const markdownTitle = (activeLayer, isLink) => {
     let title = '##'
     let i = -1
+    let prevSpace = ''
     while(i<activeLayer){
         i++
         title+='#'
+        prevSpace += ''
+
     }
-    return title
+    if(isLink) title += '#'
+    return title + prevSpace
+}
+const markdownIndex = (activeLayer, isLink) => {
+    let index = '*'
+    let i = -1
+    let prevSpace = ''
+    while(i<activeLayer){
+        i++
+        // prevSpace += '    '
+
+    }
+    // if(isLink) title += '#'
+    return prevSpace + index
 }
 const transfer2RelativePath = (path) => {
     const startIdx = path.indexOf(__dirname)
@@ -54,13 +70,18 @@ const traversal = (subpath, layer = 0) => {
         if(ignoreList.includes(filename)) continue
         const filepath = Path.join(subpath,`./${filename}`)
         if(isDirectory(filepath)){
-            rootReadme += `${markdownTitle(layer)} ${rmFilenameSapce(getFileName(filepath))} \n`
+            // TODO: add sub title when there are too many articles 
+            if(layer === 0){
+                rootReadme += `${markdownTitle(layer)} ${rmFilenameSapce(getFileName(filepath))} \n`
+            }
             traversal(filepath, layer + 1)
         }else if(isMarkDown(filepath)){
-            rootReadme += `${markdownTitle(layer+1)} [${rmFilenameSapce(getFileName(filepath))}](${transfer2RelativePath(filepath)}) \n`
+            rootReadme += `${markdownIndex(layer, true)} [${rmFilenameSapce(getFileName(filepath))}](${transfer2RelativePath(filepath)}) \n`
         }
     }
-    rootReadme += '\n'
+    if(layer === 0){
+        rootReadme += '\n'
+    }
 }
 
 traversal(Path.join(__dirname, './'), 0)
