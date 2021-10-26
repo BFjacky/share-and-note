@@ -5,6 +5,7 @@
 ### Javascript系列 
 * [Generator.md](/Javascript%20系列/Generator.md) 
 * [Promise使用、原理以及实现过程.md](/Javascript%20系列/Promise%20使用、原理以及实现过程.md) 
+* [字符编码.md](/Javascript%20系列/字符编码.md) 
 ### Node系列 
 * [Nodejs识别图片类型.md](/Node%20系列/Nodejs%20识别图片类型.md) 
 ### Pixi系列 
@@ -14,10 +15,13 @@
 ### Quill系列 
 * [Quill实践指南.md](/Quill%20系列/Quill%20实践指南.md) 
 ### React系列 
+* [ReactLane优先级模型.md](/React%20系列/React%20Lane%20优先级模型.md) 
+* [React渲染原理解析.md](/React%20系列/React%20渲染原理解析.md) 
 * [React生命周期详解.md](/React%20系列/React%20生命周期详解.md) 
 * [React任务调度核心-Scheduler.md](/React%20系列/react-scheduler/React%20任务调度核心%20-%20Scheduler.md) 
 * [Redux部分原理揭秘.md](/React%20系列/redux/Redux%20部分原理揭秘.md) 
 ### Vue系列 
+* [List-diff算法.md](/Vue%20系列/List-diff%20算法.md) 
 * [Vue项目实现简单的权限控制.md](/Vue%20系列/Vue%20项目实现简单的权限控制.md) 
 * [Vue2.5+迁移至Typescript指南.md](/Vue%20系列/Vue2.5+迁移至Typescript指南.md) 
 * [基于VUE-SSR的性能优化.md](/Vue%20系列/基于%20VUE-SSR%20的性能优化.md) 

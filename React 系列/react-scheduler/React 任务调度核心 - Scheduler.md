@@ -54,3 +54,7 @@ performWorkUntilDeadline & flushWork & workLoop 三个方法为任务调度的�
     2. 循环获取 taskQueue 中过期时间最早的任务,若该任务未过期且 **shouldYieldToHost** 需要让出主线程则会终止任务执行(React可中断任务)
     3. 执行当前任务回调,并获取任务回调的返回值**continuationCallback**,若存在**continuationCallback**则继续调度执行该回调,若该任务未返回后续任务,则将该任务从 taskQueue 中移除(子任务链的实现).
     4. 跳出循环后判断 taskQueue 任务队列是否清空,若清空则调用 requestHostTimeout 延时执行尚不可执行的任务.
+
+#### demo
+在这个文件中模拟了使用 Scheduler 进行任务调度,当插入其他更重要的任务后,Scheduler 仍然能让出一部分时间给主线程执行其他任务.
+[Scheduler 调度 demo.md](./index.html) 
