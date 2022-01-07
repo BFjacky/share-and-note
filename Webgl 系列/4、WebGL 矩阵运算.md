@@ -134,7 +134,7 @@ worldCoord = scaleMatrix _ translationMatrix _ rotationMatrix \* localCoord
 ### 投影矩阵
 
 投影矩阵主要有正交投影和透视投影,在 2D 渲染中一般会用正交投影,正交投影的功能也比较简单,依然是一次坐标系的变化,由世界坐标系转换为 WebGL 舞台的坐标系,在 gl-matrix 为我们提供正交矩阵的计算,我们只需要传入相应的参数即可
-**const orthoMatrix = mat4.orthoNO(mat4.create(), 0, this.stageWidth, 0, this.stageHeight, 0, -this.stageDepth)**
+**const orthoMatrix = mat4.orthoNO(mat4.create(), 0, this.stageWidth, 0, this.stageHeight, this.stageDepth, 0)**
 其参数如下
 
 ```js
@@ -154,3 +154,44 @@ worldCoord = scaleMatrix _ translationMatrix _ rotationMatrix \* localCoord
  */
 export function orthoNO(out, left, right, bottom, top, near, far) {}
 ```
+
+正交投影实际上是一次平移变换+缩放变换,我们设视锥体的上下左右近远四个位置为(t,b,l,r,n,f)
+平移变换做如下映射:
+* (t+b)/2 映射到 0 => -(t+b)/2
+* (r+l)/2 映射到 0 => -(r+l)/2
+* (n+f)/2 映射到 0 => -(n+f)/2
+缩放变换便是做如下映射:
+* t-b 映射到 (1 - -1) => 2/(t-b)
+* r-l 映射到 (1 - -1) => 2/(r-l)
+* n-f 映射到 (-1 - 1) => 2/(f-n) **z轴上的映射与x、y轴不同是因为WebGL中默认使用左手坐标系,但一般进行图形化开发时,使用右手坐标系更多**
+
+将其整理成矩阵后,由于先做了平移变化,还需要将平移变换的值与缩放变换的值相乘,最终得到的矩阵如下:
+该矩阵是建立在 Webgl 采用左手坐标系的情况下建立的,即在z轴上,-1 指向屏幕外,1指向屏幕内
+```js
+export function orthoNO(out, left, right, bottom, top, near, far) {
+  const lr = 1 / (left - right);
+  const bt = 1 / (bottom - top);
+  const nf = 1 / (near - far);
+  out[0] = -2 * lr;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 0;
+  out[4] = 0;
+  out[5] = -2 * bt;
+  out[6] = 0;
+  out[7] = 0;
+  out[8] = 0;
+  out[9] = 0;
+  out[10] = -2 * nf;
+  out[11] = 0;
+  out[12] = (left + right) * lr;
+  out[13] = (top + bottom) * bt;
+  out[14] = (far + near) * nf;
+  out[15] = 1;
+  return out;
+}
+```
+经过正交矩阵的变换,我们已经可以讲空间里的坐标点映射到剪切空间中了
+
+参考文章
+**https://zhuanlan.zhihu.com/p/122411512**
