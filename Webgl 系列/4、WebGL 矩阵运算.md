@@ -127,6 +127,26 @@ update2DSpriteModelMatrix({ size, rotation, position,localSize }) {
 4、最终进行新坐标的计算(**⚠️ 矩阵乘法不具备交换律**):
 worldCoord = scaleMatrix _ translationMatrix _ rotationMatrix \* localCoord
 
+#### 二维旋转矩阵推导
+缩放、平移矩阵比较好理解,这里单独解释一下旋转矩阵的推导.
+对于一个坐标系下的点坐标(x,y),其在 xOy 坐标系下的角度为 θ,设其半径为 r,则有
+```
+x = cosθ * r
+y = sinθ * r
+```
+设其旋转角度 α,求新的 xOy 坐标系下的坐标,则有
+```
+newX = cos(θ + α) * r
+newY = sin(θ + α) * r
+// 经过三角函数计算
+newX = (cosθ * cosα - sinθ * sinα) * r
+newY = (sinθ * cosα + sinα * cosθ) * r
+// 整理得
+newX = x * cosα - y * sinα
+newY = y * cosα + x * sinα
+```
+有了上面的表达式,便可轻松整理出矩阵
+
 ### 视图矩阵
 
 视图矩阵作用一句话简明表达就是世界坐标系转换到摄像机坐标系。在 2D 渲染中,一般不会有观察位置的变化,这里也先忽略掉这部分内容
