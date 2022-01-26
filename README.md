@@ -30,5 +30,8 @@
 * [2、WebGL基础概念.md](/Webgl%20系列/2、WebGL%20基础概念.md) 
 * [3、WebGL数据绑定.md](/Webgl%20系列/3、WebGL%20数据绑定.md) 
 * [4、WebGL矩阵运算.md](/Webgl%20系列/4、WebGL%20矩阵运算.md) 
+* [5、WebGL纹理创建与绑定.md](/Webgl%20系列/5、WebGL%20纹理创建与绑定.md) 
 * [待实现.md](/Webgl%20系列/待实现.md) 
+### 项目构建系列 
+* [Babel.md](/项目构建系列/Babel.md) 
 
