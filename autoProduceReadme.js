@@ -60,7 +60,10 @@ const isIgnoreStatFile = (path) => {
     return filename === IGNORE_STAT_NAME
 }
 
-let rootReadme = `# Share And Note \n\n`
+let rootReadme = `# Share And Note \n\n
+### 写在前面 \n\n
+本仓库是作者对一些框架原理、源码阅读、Web标准等前端技术的日常记录,若您发现文章中有错误的地方,请不吝赐教,作者学习后一定会及时改正.
+`
 
 const traversal = (subpath, layer = 0) => {
     const filenames = fs.readdirSync(subpath)

@@ -1,5 +1,10 @@
 # Share And Note 
 
+
+### 写在前面 
+
+
+本仓库是作者对一些框架原理、源码阅读、Web标准等前端技术的日常记录,若您发现文章中有错误的地方,请不吝赐教,作者学习后一定会及时改正.
 ### Css系列 
 * [移动端适配flexiblerem布局方案全面讲解.md](/Css%20系列/移动端适配%20flexible%20rem%20布局方案全面讲解.md) 
 ### Javascript系列 
@@ -18,6 +23,7 @@
 * [ReactLane优先级模型.md](/React%20系列/React%20Lane%20优先级模型.md) 
 * [React渲染原理解析.md](/React%20系列/React%20渲染原理解析.md) 
 * [React生命周期详解.md](/React%20系列/React%20生命周期详解.md) 
+* [React事件及优先级.md](/React%20系列/react-reconciler/React事件及优先级.md) 
 * [React任务调度核心-Scheduler.md](/React%20系列/react-scheduler/React%20任务调度核心%20-%20Scheduler.md) 
 * [Redux部分原理揭秘.md](/React%20系列/redux/Redux%20部分原理揭秘.md) 
 ### Vue系列 
