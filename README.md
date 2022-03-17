@@ -20,10 +20,14 @@
 ### Quill系列 
 * [Quill实践指南.md](/Quill%20系列/Quill%20实践指南.md) 
 ### React系列 
+* [React18新特性.md](/React%20系列/React%2018%20新特性.md) 
+* [ReactHook.md](/React%20系列/React%20Hook.md) 
 * [ReactLane优先级模型.md](/React%20系列/React%20Lane%20优先级模型.md) 
-* [React渲染原理解析.md](/React%20系列/React%20渲染原理解析.md) 
+* [React架构设计.md](/React%20系列/React%20架构设计.md) 
 * [React生命周期详解.md](/React%20系列/React%20生命周期详解.md) 
 * [React事件及优先级.md](/React%20系列/react-reconciler/React事件及优先级.md) 
+* [React任务执行.md](/React%20系列/react-reconciler/React任务执行.md) 
+* [schedule.md](/React%20系列/react-reconciler/schedule.md) 
 * [React任务调度核心-Scheduler.md](/React%20系列/react-scheduler/React%20任务调度核心%20-%20Scheduler.md) 
 * [Redux部分原理揭秘.md](/React%20系列/redux/Redux%20部分原理揭秘.md) 
 ### Vue系列 
